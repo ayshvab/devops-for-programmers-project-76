@@ -1,0 +1,16 @@
+---
+
+- hosts: webservers
+  tasks:
+    # - community.docker.docker_network:
+    #     name: devops-example
+    
+    - community.docker.docker_container:
+        name: redmine
+        image: redmine:5
+        restart_policy: always
+        state: started
+        ports:
+          - 80:3000
+        # env_file: 
+
