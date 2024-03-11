@@ -19,4 +19,4 @@ $ make deploy
 ```
 
 #### Access point
-http://devops.ant0n.xyz
+https://devops.ant0n.xyz
