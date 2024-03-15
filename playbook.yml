@@ -1,21 +1,26 @@
 ---
 
-- hosts: webservers
+- name: Redmine Playbook
+  hosts: webservers
   vars:
     - project_dir: /project
     - env_file_path: "{{ project_dir }}/.env"
 
   tasks:
-    - ansible.builtin.file:
+    - name: Project Directory
+      ansible.builtin.file:
         path: "{{ project_dir }}"
         state: directory
         mode: '0755'
 
-    - ansible.builtin.template:
+    - name: Creating environment
+      ansible.builtin.template:
         src: env.j2
         dest: "{{ env_file_path }}"
+        mode: '0600'
 
-    - community.docker.docker_container:
+    - name: Redmine
+      community.docker.docker_container:
         name: redmine
         image: redmine:5
         restart_policy: always
