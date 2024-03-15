@@ -4,3 +4,7 @@
 #   scm: git
 #   version: v1.16.0
 - name: geerlingguy.pip
+- name: anxs.postgresql
+  src: https://github.com/ANXS/postgresql
+  scm: git
+  version: v1.16.0

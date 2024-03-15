@@ -1,9 +1,19 @@
 ---
 
 - hosts: webservers
+  vars:
+    - project_dir: /project
+    - env_file_path: "{{ project_dir }}/.env"
+
   tasks:
-    # - community.docker.docker_network:
-    #     name: devops-example
+    - ansible.builtin.file:
+        path: "{{ project_dir }}"
+        state: directory
+        mode: '0755'
+
+    - ansible.builtin.template:
+        src: env.j2
+        dest: "{{ env_file_path }}"
     
     - community.docker.docker_container:
         name: redmine
@@ -12,5 +22,5 @@
         state: started
         ports:
           - 80:3000
-        # env_file: 
+        env_file: "{{ env_file_path }}"
 

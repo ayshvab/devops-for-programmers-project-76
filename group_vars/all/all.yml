@@ -1,0 +1,9 @@
+---
+
+db_host: "{{ hostvars[groups['db'][0]].ansible_host }}"
+db_name: redmine
+db_user: redmine
+db_password: "{{ vault_db_password }}"
+db_postgresql_pg_hba_md5_hosts:
+   - "{{ hostvars[groups['webservers'][0]].ansible_host }}/32"
+   - "{{ hostvars[groups['webservers'][1]].ansible_host }}/32"

@@ -1,0 +1,25 @@
+---
+- hosts: db
+  roles:
+    - role: anxs.postgresql
+      vars:
+        - ansible_python_interpreter: "/usr/bin/python3"
+        - postgresql_version: 16
+        - postgresql_encoding: "UTF-8"
+        - postgresql_locale: "en_US.UTF-8"
+        - postgresql_ctype: "en_US.UTF-8"
+        - postgresql_admin_user: "postgres"
+        - postgresql_databases:
+            - name: "{{ db_name }}"
+              owner: "{{ db_user }}"
+              state: present
+        - postgresql_users:
+            - name: "{{ db_user }}"
+              pass: "{{ db_password }}"
+              state: present
+        - postgresql_listen_addresses: "*"
+        - postgresql_pg_hba_md5_hosts: "{{ db_postgresql_pg_hba_md5_hosts }}"
+  tasks:
+    - community.general.ufw:
+        rule: allow
+        port: 5432
