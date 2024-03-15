@@ -9,7 +9,7 @@ setup-db:
 deploy:
 	ansible-playbook --vault-password-file $(VAULT_PASSWORD_FILE) deploy.yml -i inventory.ini -vv
 
-ansible-roles:
+ansible-install:
 	ansible-galaxy install -r requirements.yml
 
 edit-vault:

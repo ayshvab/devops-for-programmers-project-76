@@ -3,9 +3,9 @@
 
 ### Redmine
 
-#### Install Ansible Roles
+#### Install Ansible Roles and Collections
 ```bash
-$ make ansible-roles
+$ make ansible-install
 ```
 
 #### Setup remote servers

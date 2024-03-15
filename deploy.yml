@@ -24,3 +24,16 @@
           - 80:3000
         env_file: "{{ env_file_path }}"
 
+    - name: Import the Datadog Agent role from the Datadog collection
+      vars:
+        datadog_api_key: "{{ vault_datadog_api_key }}"
+        datadog_site: "datadoghq.eu"
+        datadog_apm_instrumentation_enabled: "all"
+        datadog_checks:
+          http_check:
+            init_config:
+            instances:
+              - name: Redmine
+                url: http://localhost
+      import_role:
+        name: datadog.dd.agent

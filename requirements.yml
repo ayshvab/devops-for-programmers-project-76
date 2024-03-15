@@ -3,8 +3,12 @@
 #   src: https://github.com/ANXS/postgresql
 #   scm: git
 #   version: v1.16.0
+roles:
 - name: geerlingguy.pip
 - name: anxs.postgresql
   src: https://github.com/ANXS/postgresql
   scm: git
   version: v1.16.0
+
+collections:
+- name: datadog.dd
