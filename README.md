@@ -10,7 +10,8 @@ $ make ansible-install
 
 #### Setup remote servers
 ```bash
-$ make setup
+$ make setup-db # setup db server
+$ make setup    # setup servers
 ```
 
 #### Deploy 

@@ -7,7 +7,7 @@ setup-db:
 	ansible-playbook --vault-password-file $(VAULT_PASSWORD_FILE) setup-db.yml -i inventory.ini -vv
 
 deploy:
-	ansible-playbook --vault-password-file $(VAULT_PASSWORD_FILE) deploy.yml -i inventory.ini -vv
+	ansible-playbook --vault-password-file $(VAULT_PASSWORD_FILE) playbook.yml -i inventory.ini -vv
 
 ansible-install:
 	ansible-galaxy install -r requirements.yml
