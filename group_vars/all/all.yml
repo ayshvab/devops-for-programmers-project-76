@@ -7,3 +7,12 @@ db_password: "{{ vault_db_password }}"
 db_postgresql_pg_hba_md5_hosts:
    - "{{ hostvars[groups['webservers'][0]].ansible_host }}/32"
    - "{{ hostvars[groups['webservers'][1]].ansible_host }}/32"
+datadog_api_key: "{{ vault_datadog_api_key }}"
+datadog_site: "datadoghq.eu"
+datadog_apm_instrumentation_enabled: "all"
+datadog_checks:
+ http_check:
+   init_config:
+   instances:
+     - name: Redmine
+       url: http://localhost
